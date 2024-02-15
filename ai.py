@@ -9,13 +9,13 @@ from bs4 import BeautifulSoup
 import os
 
 
-class Botson:
+class BotsonBrain:
     def respond(self, question):
         raise NotImplementedError("Trivia bots need a response function!")
 
 
 # created by Reid Baris, w/ minor refactoring from Emma Bethel
-class WebScraperBotson(Botson):
+class WebScraperBotson(BotsonBrain):
     def respond(self, question):
         words = question.split(' ')
         question_reformatted = ""
@@ -80,7 +80,7 @@ class WebScraperBotson(Botson):
 
 
 # created by Emma Bethel
-class GptBotson(Botson):
+class GptBotson(BotsonBrain):
     def __init__(self):
         api_key = os.environ.get('OPENAI_API_KEY')
         if api_key is None:
